@@ -15,5 +15,14 @@ const hash = crypto.createHmac('sha256', secret)
              .update('This is just for a test')
              .digest('hex');
 
+const first4HexCharacters = hash.slice(0, 4); // get first 4 HexChracters
+const convertTOInt = parseInt(first4HexCharacters, 16) % 10000;
+             
+let code = convertTOInt.toString();
+            code = Array(4 - code.length)
+                        .fill(0)
+                        .join('') + code;
+
                 
 console.log(hash);
+console.log(code);
